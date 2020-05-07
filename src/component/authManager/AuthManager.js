@@ -8,7 +8,7 @@ export class AuthManager extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'https://donation-manager-server.herokuapp.com/';
+        this.urlBase = 'https://donation-manager-server.herokuapp.com';
         this.port = '8080';
 
         this.state = {
