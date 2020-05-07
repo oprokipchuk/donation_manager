@@ -7,7 +7,7 @@ export class Logout extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
+        this.urlBase = 'https://donation-manager-server.herokuapp.com';
         this.port = '8080';
 
     }
@@ -17,13 +17,13 @@ export class Logout extends React.Component{
     }
 
     loadUser = () => {
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/user`;
+        let getUserUrl = `${this.urlBase}/api/v1/user`;
         return axios.get(getUserUrl, {withCredentials: true})
             .catch(() => {this.props.history.push("/login")});
     };
 
     logout = () => {
-        let logoutUrl = `${this.urlBase}:${this.port}/logout`;
+        let logoutUrl = `${this.urlBase}/logout`;
         axios.get(logoutUrl, {withCredentials: true})
             .then(() => {
                 this.deleteTokenCookie();

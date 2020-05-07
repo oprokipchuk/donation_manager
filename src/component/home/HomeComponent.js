@@ -7,13 +7,13 @@ export class HomeComponent extends React.Component{
     constructor(props) {
         super(props);
 
-        this.donationsGetUrl = 'http://localhost:8080/api/v1/donation';
+        this.donationsGetUrl = 'https://donation-manager-server.herokuapp.com/api/v1/donation';
         this.authorizationUrl = 'https://streamlabs.com/api/v1.0/authorize';
 
         this.authorizationData = {
             scopes: 'donations.read',
             client_id: 'GCpoofjBScH9YkE7eB5OdMsxPLUSj8JVPzLTQVHV',
-            redirect_server_uri: 'http://localhost:8080/auth',
+            redirect_server_uri: 'https://donation-manager-server.herokuapp.com/auth',
             response_type: 'code',
         };
 

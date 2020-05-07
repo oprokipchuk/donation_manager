@@ -11,8 +11,8 @@ export class ContentPage extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = "http://localhost";
-        this.donationsGetUrl = 'http://localhost:8080/api/v1/donation';
+        this.urlBase = "https://donation-manager-server.herokuapp.com";
+        this.donationsGetUrl = 'https://donation-manager-server.herokuapp.com/api/v1/donation';
         this.authorizationUrl = 'https://streamlabs.com/api/v1.0/authorize';
         this.port = "8080";
 
@@ -23,7 +23,7 @@ export class ContentPage extends React.Component{
         this.authorizationData = {
             scopes: 'donations.read',
             client_id: 'GCpoofjBScH9YkE7eB5OdMsxPLUSj8JVPzLTQVHV',
-            redirect_server_uri: 'http://localhost:8080/auth',
+            redirect_server_uri: 'https://donation-manager-server.herokuapp.com/auth',
             response_type: 'code',
         };
 
@@ -87,7 +87,7 @@ export class ContentPage extends React.Component{
     };
 
     loadUser = () => {
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/user`;
+        let getUserUrl = `${this.urlBase}/api/v1/user`;
         return axios.get(getUserUrl, {withCredentials: true})
             .catch(() => {this.props.history.push("/login")});
     };
@@ -96,7 +96,7 @@ export class ContentPage extends React.Component{
         let reuestConfig = {
             withCredentials: true,
         };
-        let loadProvidersUrl = "http://localhost:8080/api/v1/providers";
+        let loadProvidersUrl = "https://donation-manager-server.herokuapp.com/api/v1/providers";
         return axios.get(loadProvidersUrl, reuestConfig)
             .then((response) => this.setState({
                 providers: response.data.map((provider) => {return {

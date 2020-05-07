@@ -8,7 +8,7 @@ export class AuthManager extends React.Component{
     constructor(props) {
         super(props);
 
-        this.urlBase = 'http://localhost';
+        this.urlBase = 'https://donation-manager-server.herokuapp.com/';
         this.port = '8080';
 
         this.state = {
@@ -22,7 +22,7 @@ export class AuthManager extends React.Component{
     }
 
     loadUser = () => {
-        let getUserUrl = `${this.urlBase}:${this.port}/api/v1/user`;
+        let getUserUrl = `${this.urlBase}/api/v1/user`;
         axios.get(getUserUrl, {withCredentials: true})
             .then(() => {this.props.history.push("/donations")});
     };
@@ -30,7 +30,7 @@ export class AuthManager extends React.Component{
     onLogin = (event) => {
         let querystring = require('querystring');
         let loginForm = event.target.parentElement;
-        let loginUrl = `${this.urlBase}:${this.port}/jwt/auth`;
+        let loginUrl = `${this.urlBase}/jwt/auth`;
         let loginData = {
             username: loginForm.username.value,
             password: loginForm.password.value,
@@ -59,7 +59,7 @@ export class AuthManager extends React.Component{
 
     onRegister = (event) => {
         let registerForm = event.target.parentElement;
-        let registerUrl = `${this.urlBase}:${this.port}/register`;
+        let registerUrl = `${this.urlBase}/register`;
         let registerData = {
             email: registerForm.username.value,
             password: registerForm.password.value,
