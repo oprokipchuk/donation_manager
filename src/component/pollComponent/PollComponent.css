@@ -1,0 +1,40 @@
+.poll-main {
+    padding: 100px;
+}
+
+.poll-button-section {
+    margin-bottom: 50px;
+}
+
+.poll-content-section {
+    color: white;
+}
+
+.poll-progress-bar-back {
+    width: 100%;
+    background-color: grey;
+    margin-top: 30px;
+}
+
+.poll-progress-bar-front {
+    width: 1%;
+    height: 45px;
+    background-color: #EC9983;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 45px; /* To center it vertically */
+    color: white;
+    overflow: visible;
+    word-wrap: normal;
+    word-break: keep-all;
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+.form-poll-create {
+    color: white;
+}
+
+.form-poll-create button {
+    margin-right: 30px;
+}

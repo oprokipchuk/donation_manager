@@ -1,0 +1,45 @@
+.player-main {
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+}
+
+.player-content {
+    padding: 30px;
+    /*padding: 50px;*/
+    /*margin: 0 auto;*/
+    /*display: inline-block;*/
+    /*flex-grow: 1;*/
+    /*height: 1000px;*/
+    text-align: center;
+    background-color: #444;
+}
+
+.player-content > iframe {
+    margin: 0 auto;
+    float: none;
+    display: inline-block;
+}
+
+.player-side {
+    /*width: 250px;*/
+    background-color: #222;
+    min-height: 100px;
+    padding: 30px 15px 15px;
+}
+
+.min-donation {
+    margin-top: 20px;
+    vertical-align: top;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+
+.min-donation > input {
+    width: 200px;
+    display: inline-block !important;
+    margin-right: 10px;
+}
+
+.min-donation > button {
+}

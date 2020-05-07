@@ -1,0 +1,36 @@
+.donation-list {
+    padding: 100px 30px 30px;
+}
+
+.donation-list a {
+    margin-bottom: 10px;
+    background-color: #404040 !important;
+    border: none !important;
+}
+
+.donation-list-header {
+    padding: 0 20px;
+    color: white;
+}
+
+.donation-list-header > p {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.donation-list-elem-username {
+    width: 30%;
+}
+
+.donation-list-elem-amount {
+    width: 15%;
+}
+
+.donation-list-elem-message {
+    width: 40%;
+}
+
+.donation-list-elem-datetime {
+    width: 15%;
+    text-align: right;
+}

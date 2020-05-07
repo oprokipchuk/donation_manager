@@ -1,0 +1,27 @@
+.auth-block {
+    display: inline-block;
+    width: 50%;
+    padding: 150px;
+    vertical-align: middle;
+}
+
+/*.login-main {
+    margin: 150px auto 0;
+    width: 600px;
+}*/
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.login-btn{
+    background-color: #000 !important;
+    color: #fff;
+    margin-right: 10px;
+}
