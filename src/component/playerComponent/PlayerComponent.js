@@ -130,9 +130,9 @@ export class PlayerComponent extends React.Component{
     };
 
     loadVideosFromCookie = () => {
-        let videos = JSON.parse(CookieManager.getCookie("videosData"));
-        console.log(videos);
-        if (videos === undefined) videos = [];
+        let videosData = CookieManager.getCookie("videosData");
+        if (videosData === undefined) videosData = "[]";
+        let videos = JSON.parse(videosData);
         this.setState({videos: videos}, this.initPlayer);
     };
 

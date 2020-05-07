@@ -58,7 +58,9 @@ export class PollComponent extends React.Component{
                 i++;
             }
             //console.log(3);
-            let pollCopy = JSON.parse(JSON.stringify(this.state.poll));
+            let cookieData = CookieManager.getCookie("pollData");
+            if (cookieData === undefined) cookieData = "{}";
+            let pollCopy = JSON.parse(cookieData);
             //console.log(4);
 
             if (newDonations.length === 0) return;
@@ -122,8 +124,10 @@ export class PollComponent extends React.Component{
     }
 
     loadPollFromCookie = () => {
+        let cookieData = CookieManager.getCookie("pollData");
+        if (cookieData === undefined) cookieData = "{}";
         this.setState({
-            poll: JSON.parse(CookieManager.getCookie("pollData"))
+            poll: JSON.parse(cookieData)
         })
     };
 
