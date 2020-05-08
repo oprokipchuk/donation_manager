@@ -218,8 +218,8 @@ export class PollComponent extends React.Component{
         let poll = {
             sum: 0,
             name: inputs[0].value,
-            variants: [...inputs].filter((e, i) => i !== 0).map((e) => {return {
-                variantName: e.value,
+            variants: [...inputs].filter((e, i) => i !== 0).map((e, i) => {return {
+                variantName: this.handleVariantValue(e.value, i),
                 variantValue: 0,
             }})
         };
@@ -230,6 +230,11 @@ export class PollComponent extends React.Component{
             poll: poll,
             pollMode: 'runtime',
         });
+    };
+
+    handleVariantValue = (variant, index) => {
+        if (variant !== undefined && variant !== null) return variant;
+        else return '' + (index + 1);
     };
 
     renderPollCreationSection = () => {
