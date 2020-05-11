@@ -25,30 +25,24 @@ export class PlayerComponent extends React.Component{
 
     updateDonations = () => {
         let donations = this.props.donations;
-        //console.log(donations);
         let lastDonationDate = CookieManager.getCookie("last_donation_date_player");
         if (lastDonationDate === undefined) {
             CookieManager.setCookie("last_donation_date_player", 0);
         }
-        //console.log(lastDonationDate);
-        //console.log(1);
         if (donations.length > 0) {
             CookieManager.setCookie("last_donation_date_player", donations[0].created_at);
-            //console.log(2);
             let newDonations = [];
             let i = 0;
             while (donations[i].created_at > lastDonationDate) {
                 newDonations.push(donations[i]);
                 i++;
             }
-            //console.log(3);
             let videosCopy = JSON.parse(JSON.stringify(this.state.videos));
             if (videosCopy === undefined || videosCopy === null || videosCopy === '') {
                 videosCopy = [];
             }
             let emptyQueue = false;
             if (videosCopy.length === 0) emptyQueue = true;
-            //console.log(4);
 
             if (newDonations.length === 0) return;
 
@@ -66,7 +60,6 @@ export class PlayerComponent extends React.Component{
                 for (let j = 0; j < newDonations.length; j++) {
                     let text = newDonations[j].message;
                     let playPos = text.indexOf('/play');
-                    //console.log(5);
                     if (playPos !== -1) {
                         let nextSpace = text.indexOf(' ', playPos + 1);
                         let playUrl;
@@ -76,7 +69,6 @@ export class PlayerComponent extends React.Component{
                         else {
                             playUrl = text.substring(playPos + 5);
                         }
-                        //console.log(6);
                         if (playUrl !== undefined && playUrl !== null && playUrl !== '') {
 
                             let sumInUSD;
@@ -95,10 +87,8 @@ export class PlayerComponent extends React.Component{
                                 videosCopy = [...videosCopy, playUrl];
                             }
                         }
-                        //console.log(7);
                     }
                 }
-                //console.log(8);
                 this.saveVideosToCookie(videosCopy);
 
                 console.log(videosCopy);
@@ -116,9 +106,6 @@ export class PlayerComponent extends React.Component{
 
     componentDidMount() {
         console.log('player did mount');
-        //console.log(this.player.current);
-        //this.playVideo();
-        //this.saveVideosToCookie();
         this.loadVideosFromCookie();
         this.loadMinDonationFromCookie();
         console.log(this.state.videos);
@@ -182,7 +169,6 @@ export class PlayerComponent extends React.Component{
 
     loadVideo = () => {
         let config = {
-            // videoId: this.state.videos[0].replace("https://www.youtube.com/watch?v=", ""),
             width: 720,
             height: 405,
             playerVars: {
@@ -214,7 +200,6 @@ export class PlayerComponent extends React.Component{
     onPlayerReady = event => {
         console.log('player ready' + this.state.videos);
         event.target.playVideo();
-        //setTimeout(() => {this.player.cueVideoByUrl(this.state.videos[1])}, 5000)
     };
 
     onPlayerStateChange = event => {

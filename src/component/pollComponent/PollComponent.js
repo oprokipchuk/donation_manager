@@ -15,24 +15,6 @@ export class PollComponent extends React.Component{
             pollMode: "runtime",
             pollCreationVariantsAmount: 1,
             lastPollDonationDate: 0,
-            /*poll: {
-                name: "pollname",
-                sum: 160,
-                variants: [
-                    {
-                        variantName: "variant1",
-                        variantValue: 100,
-                    },
-                    {
-                        variantName: "variant2",
-                        variantValue: 10,
-                    },
-                    {
-                        variantName: "variant3",
-                        variantValue: 50,
-                    },
-                ]
-            },*/
             poll: {},
         }
     }
@@ -44,24 +26,18 @@ export class PollComponent extends React.Component{
 
     updateDonations = () => {
         let donations = this.props.donations;
-        //console.log(donations);
         let lastDonationDate = CookieManager.getCookie("last_donation_date_poll");
-        //console.log(lastDonationDate);
-        //console.log(1);
         if (donations.length > 0) {
             CookieManager.setCookie("last_donation_date_poll", donations[0].created_at);
-            //console.log(2);
             let newDonations = [];
             let i = 0;
             while (donations[i].created_at > lastDonationDate) {
                 newDonations.push(donations[i]);
                 i++;
             }
-            //console.log(3);
             let cookieData = CookieManager.getCookie("pollData");
             if (cookieData === undefined) cookieData = "{}";
             let pollCopy = JSON.parse(cookieData);
-            //console.log(4);
 
             if (newDonations.length === 0) return;
 
@@ -79,7 +55,6 @@ export class PollComponent extends React.Component{
                 for (let j = 0; j < newDonations.length; j++) {
                     let text = newDonations[j].message;
                     let votePos = text.indexOf('/vote');
-                    //console.log(5);
                     if (votePos !== -1) {
                         let nextSpace = text.indexOf(' ', votePos + 1);
                         let voteNum;
@@ -89,7 +64,6 @@ export class PollComponent extends React.Component{
                         else {
                             voteNum = text.substring(votePos + 5);
                         }
-                        //console.log(6);
                         if (+voteNum > 0 && pollCopy.name !== undefined && voteNum <= pollCopy.variants.length) {
 
                             let sumInUSD;
@@ -107,10 +81,8 @@ export class PollComponent extends React.Component{
                             pollCopy.sum += sumInUSD;
                             pollCopy.variants[voteNum - 1].variantValue += sumInUSD;
                         }
-                        //console.log(7);
                     }
                 }
-                //console.log(8);
                 this.savePollToCookie(pollCopy);
                 this.setState({poll: pollCopy});
 

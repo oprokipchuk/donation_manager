@@ -23,7 +23,6 @@ export class HomeComponent extends React.Component{
     }
 
     componentDidMount() {
-        //this.loadDonations();
     }
 
     authorization = () => {

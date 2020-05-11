@@ -53,33 +53,17 @@ export class ContentPage extends React.Component{
         var body = document.body,
             html = document.documentElement;
 
-        //console.log(body.scrollHeight);
-        //console.log(body.offsetHeight);
-        //console.log(html.clientHeight);
-        //console.log(html.scrollHeight);
-        //console.log(html.offsetHeight);
-
         var height = Math.max( body.scrollHeight, body.offsetHeight,
             html.clientHeight, html.scrollHeight, html.offsetHeight );
 
         let side = document.getElementById("content-side");
         let main = document.getElementById("content-main");
-        //console.log(side);
-        //side.style.height = document.body.scrollHeight + 'px';
         main.style.height = height + 'px';
     };
 
     donationRefreshFunc = () => {
         this.loadDonations()
             .then((response) => {
-                /*let donations = response.data.donations;
-                if (donations > 0) {
-                    let newDonations = [];
-                    let i = 0;
-                    while (donations[i].created_at > this.state.lastDonationDate) {
-                        newDonations.push(donations[i]);
-                    }
-                }*/
             })
             .finally(() => {
             this.donationRefreshTimeout = setTimeout(this.donationRefreshFunc, this.donationRefreshTime);
